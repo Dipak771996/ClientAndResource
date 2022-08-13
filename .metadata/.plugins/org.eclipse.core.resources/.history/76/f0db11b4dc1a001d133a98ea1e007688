@@ -1,0 +1,66 @@
+package com.BikkadIT.IRCTC.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Passenger_Info")
+public class Passenger {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "Passenger_Id")
+	private int pid;
+	@Column(name = "First_Name")
+	private String firstName;
+	@Column(name = "Last_Name")
+	private String lastName;
+	@Column(name = "From")
+	private String from;
+	@Column(name = "To")
+	private String to;
+	@Column(name = "Date_Of_Journey")
+	private String doj;
+	public int getPid() {
+		return pid;
+	}
+	public void setPid(int pid) {
+		this.pid = pid;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getFrom() {
+		return from;
+	}
+	public void setFrom(String from) {
+		this.from = from;
+	}
+	public String getTo() {
+		return to;
+	}
+	public void setTo(String to) {
+		this.to = to;
+	}
+	public String getDoj() {
+		return doj;
+	}
+	public void setDoj(String doj) {
+		this.doj = doj;
+	}
+	
+	
+}

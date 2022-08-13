@@ -1,0 +1,5 @@
+package com.BikkadIT.MMT.model;
+
+public class Passenger {
+
+}

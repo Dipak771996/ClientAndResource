@@ -1,0 +1,35 @@
+package com.BikkadIT.IRCTC.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.BikkadIT.IRCTC.Service.ServiceImpl;
+import com.BikkadIT.IRCTC.model.Passenger;
+import com.BikkadIT.IRCTC.model.Ticket;
+
+@RestController
+public class Controller {
+
+	@Autowired
+	private ServiceImpl serviceImpl;
+	
+	@PostMapping(value = "/getTicket")
+	public Ticket getTicket(@RequestBody Passenger passenger)
+	{
+		Ticket ticket = serviceImpl.getTicket(passenger);
+		
+		if(ticket!=null)
+		{
+		    return ticket;
+			//	return new ResponseEntity<Ticket>(ticket,HttpStatus.CREATED);
+		}
+		
+		// return new ResponseEntity<Ticket>(ticket,HttpStatus.BAD_REQUEST);
+	    return ticket;
+	}
+	
+}

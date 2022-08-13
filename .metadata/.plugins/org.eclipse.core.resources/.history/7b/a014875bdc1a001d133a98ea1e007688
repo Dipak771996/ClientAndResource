@@ -1,0 +1,57 @@
+package com.BikkadIT.IRCTC.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Passenger {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int pid;
+	private String firstName;
+	private String lastName;
+	private String from;
+	private String to;
+	private String doj;
+	public int getPid() {
+		return pid;
+	}
+	public void setPid(int pid) {
+		this.pid = pid;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getFrom() {
+		return from;
+	}
+	public void setFrom(String from) {
+		this.from = from;
+	}
+	public String getTo() {
+		return to;
+	}
+	public void setTo(String to) {
+		this.to = to;
+	}
+	public String getDoj() {
+		return doj;
+	}
+	public void setDoj(String doj) {
+		this.doj = doj;
+	}
+	
+	
+}

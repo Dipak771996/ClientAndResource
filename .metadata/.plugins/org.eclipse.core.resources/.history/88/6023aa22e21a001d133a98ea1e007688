@@ -1,0 +1,46 @@
+package com.BikkadIT.MMT.Controller;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.function.BodyExtractors;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import com.BikkadIT.MMT.model.Passenger;
+import com.BikkadIT.MMT.model.Ticket;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@RestController
+public class PassengerController {
+
+	@PostMapping(value = "/bookTicket",consumes = "application/json",produces = "application/json")
+	public ResponseEntity<Ticket> bookTicket(@RequestBody Passenger passenger) throws JsonProcessingException
+	{
+		System.out.println(passenger);
+		String url="https://localhost:7070/getTicket";
+		WebClient webClient = WebClient.create();
+		
+		ObjectMapper om=new ObjectMapper();
+		String string = om.writeValueAsString(passenger);
+		
+		Ticket ticket = webClient.post()
+		         .uri(url)
+		         .accept((MediaType) BodyInserters.fromValue(string))
+		         .retrieve()
+		         .bodyToMono(Ticket.class)
+		         .block();
+		if(ticket!=null)
+		{
+			return new ResponseEntity<Ticket>(ticket,HttpStatus.CREATED);
+		}
+		
+		return new ResponseEntity<Ticket>(ticket,HttpStatus.BAD_REQUEST);
+
+		
+	}
+}

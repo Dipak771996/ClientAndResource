@@ -1,0 +1,5 @@
+package com.BikkadIT.IRCTC.Repository;
+
+public class PassenferRepository {
+
+}
